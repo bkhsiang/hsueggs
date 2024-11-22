@@ -205,8 +205,8 @@
       const stockBar = document.getElementById('stock-bar');
       const progressPercentage = Math.min(stockQty * 10, 100); // Assuming max stock = 10
       
-      stockBar.style.width = `${progressPercentage}%`;
-      stockBar.setAttribute('aria-valuenow', progressPercentage);
+      stockBar.style.width = `${stockQty}%`;
+      stockBar.setAttribute('aria-valuenow', stockQty);
       stockBar.innerText = stockQty;
     })
     .catch(error => {
