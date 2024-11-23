@@ -189,7 +189,7 @@
   
 <script>
   // Fetch local JSON file
-  fetch('data.json',｛cache:"no-cache"｝)
+  fetch(`data.json?nocache=${new Date().getTime()}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
