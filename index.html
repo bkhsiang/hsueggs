@@ -165,7 +165,7 @@
     <h1>后里五香鳥蛋</h1>
     <h1 id="ShopStatus">2024-11-24 正常營業</h1>    
     <!-- <p class="lead">地點：後龍夜市  消防隊與衛生局 外環入口處 </p> -->
-    <p class="lead">時間 17:00~20:00</p>
+    <p class="lead">後龍夜市   17:00~20:00</p>
 
     <!-- <p class="lead">
       <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
@@ -174,9 +174,9 @@
 
 
   <main class="px-3">
-    <h2>目前庫存</h2>    
+    <h2>目前數量</h2>    
 <div class="progress"  style="height: 25px;" >
-  <div  id="stock-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100</div>
+  <div  id="stock-bar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div>
 
   </main>
@@ -188,6 +188,8 @@
 <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
   
 <script>
+
+  Function GetShopStatusData(){
   // Fetch local JSON file
   fetch(`data.json?nocache=${new Date().getTime()}`)
     .then(response => {
@@ -207,11 +209,17 @@
       
       stockBar.style.width = `${stockQty}%`;
       stockBar.setAttribute('aria-valuenow', stockQty);
-      stockBar.innerText = stockQty;
+      stockBar.innerText = `${stockQty}%`;
     })
     .catch(error => {
       console.error('Error fetching JSON:', error);
     });
+
+  }
+
+  GetShopStatusData();
+  setInterval(fetchJsonData, 10000);
+  
 </script>
     </body>
 </html>
